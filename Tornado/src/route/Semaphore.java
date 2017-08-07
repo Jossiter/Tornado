@@ -1,4 +1,4 @@
-package signal;
+package route;
 
 public class Semaphore {
 	private boolean state;

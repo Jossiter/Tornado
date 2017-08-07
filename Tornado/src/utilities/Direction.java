@@ -1,5 +1,5 @@
 package utilities;
 
 public enum Direction {
-	UP, DOWN, OPEN
+	NONE, WEST, NW, NORTH, NE, EAST, SE, SOUTH, SW
 }

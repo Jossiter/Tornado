@@ -1,5 +1,5 @@
 package utilities;
 
 public enum Priority {
-	MAIN, LOCAL, GOODS, ALL
+	HIGH, MEDIUM, LOW, ANY
 }

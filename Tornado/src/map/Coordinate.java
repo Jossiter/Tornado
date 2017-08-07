@@ -6,22 +6,17 @@ public class Coordinate {
 	protected long h = 0;
 	
 	// constructors
+	public Coordinate () {
+		
+	}
 	public Coordinate (long ix, long iy, long ih) {
 		this.set(ix, iy, ih);
 	}
+	public Coordinate (long ix, long iy) {
+		this.set(ix, iy, 0);
+	}
 	public Coordinate (Coordinate iCo) {
 		this.set(iCo);
-	}
-	
-	// get methods
-	public long X () {
-		return this.x;
-	}
-	public long Y () {
-		return this.y;
-	}
-	public long H () {
-		return this.h;
 	}
 	
 	// set methods
