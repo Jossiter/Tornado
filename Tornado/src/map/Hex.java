@@ -1,6 +1,5 @@
 package map;
 
-import route.Semaphore;
 import utilities.Direction;
 
 public class Hex {
