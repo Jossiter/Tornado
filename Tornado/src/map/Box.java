@@ -3,9 +3,10 @@ package map;
 import utilities.Direction;
 import static map.Constants.*;
 
-public class Box {
-	Hex hex;
-	Coordinate coord;
+public class Box implements java.io.Serializable {
+	private static final long serialVersionUID = 7486517182740132720L;
+	private Hex hex;
+	private Coordinate coord;
 
 	// Constructors 
 	public Box (int ix, int iy) {
@@ -45,10 +46,16 @@ public class Box {
 		
 		return c;
 	}
+	public Hex getHex () {
+		return hex;
+	}
 	
 	// Set Methods
 	private void setXY (int ix, int iy) {
 		coord = new Coordinate(ix, iy);
+	}
+	public void setHex (Hex iHex) {
+		hex = iHex;
 	}
 	
 	// Print Methods

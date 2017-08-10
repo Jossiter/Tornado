@@ -2,12 +2,14 @@ package map;
 
 import utilities.Direction;
 
-public class Hex {
-	private static int maxExits = 6;
+public class Hex implements java.io.Serializable {
+	private static final long serialVersionUID = -92216052397694128L;
+	private static final int maxExits = 6;
 	
 	private String name;
 	private Hex[] exit = new Hex[maxExits];
-	private route.Semaphore occupied = new route.Semaphore();	
+	private route.Semaphore occupied = new route.Semaphore();
+	private Box box;
 
 	// Constructors
 	public Hex () {
@@ -44,6 +46,20 @@ public class Hex {
 		
 		return h;
 	}
+	public Box getBox () {
+		return box;
+	}
+	public Coordinate coords () {
+		Coordinate c;
+		
+		if (box == null) {
+			c = new Coordinate();
+		} else {
+			c = box.getCoord();
+		} 
+		
+		return c;
+	}
 
 
 	
@@ -59,11 +75,15 @@ public class Hex {
 	public void orphaned () {
 		for (int i = 0; i < maxExits; i++) {
 			exit[i] = null;
-		}				
+		}
+		box = null;
 	}
 	
 	public void setName (String iName) {
 		name = iName;
+	}
+	public void setBox (Box iBox) {
+		box = iBox;
 	}
 	
 	public boolean setDirection (Direction toDirection, Hex toHex) {

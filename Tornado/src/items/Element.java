@@ -1,11 +1,5 @@
 package items;
 
-public class Element {
-	private long id;
+interface Element {
 	
-	// Constructors
-	
-	// Get Methods
-	
-	// Set Methods
 }
