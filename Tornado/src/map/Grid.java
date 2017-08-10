@@ -2,7 +2,9 @@ package map;
 
 import static map.Constants.*;
 
-public class Grid {
+public class Grid implements java.io.Serializable {
+	private static final long serialVersionUID = 818574520401754708L;
+
 	private Box gridbox[][] = new Box[MAXX + 2][MAXY + 2];
 	
 	//constructors
