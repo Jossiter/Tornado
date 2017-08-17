@@ -9,7 +9,8 @@ public class Element implements java.io.Serializable {
 	private int density;
 	private int meltingPoint;
 	private int boilingPoint;
-	
+
+
 	// Constructors
 	public Element (int id,
 					ElementCategory cat,
@@ -32,4 +33,5 @@ public class Element implements java.io.Serializable {
 	}
 	
 	// Set Methods
+
 }
