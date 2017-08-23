@@ -2,11 +2,16 @@ import java.io.IOException;
 
 import org.apache.lucene.search.TopDocs;
 
-import cookbook.*;
+import cookbook.Action;
+import cookbook.Cookbook;
+import cookbook.Ingredient;
+import cookbook.IngredientList;
+import cookbook.Recipe;
+import cookbook.Resource;
 
-public class Test {
+public class TestIngredients {
 
-	public static void main(String[] args) throws IOException {
+	public static void main(String[] args) {
 		// TODO Auto-generated method stub
 		
 		Action a = new Action("Cook");
@@ -58,3 +63,4 @@ public class Test {
 	}
 
 }
+

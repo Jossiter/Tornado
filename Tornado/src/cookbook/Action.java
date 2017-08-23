@@ -18,4 +18,9 @@ public class Action {
 	private void setName (String iName) {
 		name = new String(iName.toString());
 	}
+	
+	// Print Methods
+	public String print () {
+		return name;
+	}	
 }

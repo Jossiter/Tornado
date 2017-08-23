@@ -1,20 +1,19 @@
 package cookbook;
 
 import java.util.Comparator;
-
 import org.apache.lucene.document.Document;
 import org.apache.lucene.document.Field;
 import org.apache.lucene.document.TextField;
 
 public class Recipe implements Comparator<Recipe>, Comparable<Recipe> {
-	private Resource input = null;
+	
 	private Action action = null;
-	private Resource output = null;
+	private IngredientList input, output = null;
 	
 	// Constructors
-	public Recipe (Resource input,
-					Action action,
-					Resource output
+	public Recipe (Action action,
+					IngredientList input,
+					IngredientList output
 			) {
 		setInput (input);
 		setOutput (output);
@@ -23,43 +22,43 @@ public class Recipe implements Comparator<Recipe>, Comparable<Recipe> {
 	
     // Overriding the compareTo method
 	public int compareTo(Recipe r) {
-		return (this.read()).compareTo(r.read());
+		return (this.print()).compareTo(r.print());
 	}
 
 	@Override
 	public int compare(Recipe r1, Recipe r2) {
 		// TODO Auto-generated method stub
-		return (r1.read()).compareTo(r2.read());
+		return (r1.print()).compareTo(r2.print());
 	}	
 
 	
 	// Get Methods
-	public String read () {
-		return action.getName() 
-				+ " " 
-				+ input.getName()
-				+ " = "
-				+ output.getName();
-	}
-	
 	public Document document () {
     	Document document = new Document();
-    	document.add(new TextField("action", action.getName() , Field.Store.YES));
-    	document.add(new TextField("resource", input.getName() , Field.Store.YES));
-       	document.add(new TextField("output", output.getName() , Field.Store.YES));
+    	document.add(new TextField("action", action.print() , Field.Store.YES));
+    	document.add(new TextField("input", input.print() , Field.Store.YES));
+       	document.add(new TextField("output", output.print() , Field.Store.YES));
     	return document;		
 	}
 	
 	
 	// Set Methods
-	private void setInput (Resource r) {
-		this.input = r;
-	}
-	private void setOutput (Resource r) {
-		this.output = r;
-	}
 	private void setAction (Action a) {
 		this.action = a;
 	}
+	private void setInput (IngredientList i) {
+		this.input = i;
+	}
+	private void setOutput (IngredientList i) {
+		this.output = i;
+	}
 
+	// Output methods
+	public String print () {
+		return action.print() 
+				+ " : " 
+				+ input.print()
+				+ " = "
+				+ output.print();
+	}	
 }

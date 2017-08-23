@@ -14,13 +14,13 @@ public class Resource implements Comparator<Resource>, Comparable<Resource> {
 	@Override
 	public int compareTo(Resource o) {
 		// TODO Auto-generated method stub
-		return (this.getName()).compareTo(o.getName());
+		return (this.print()).compareTo(o.print());
 	}
 
 	@Override
 	public int compare(Resource o1, Resource o2) {
 		// TODO Auto-generated method stub
-		return (o1.getName()).compareTo(o2.getName());
+		return (o1.print()).compareTo(o2.print());
 	}
 		
 	// Get Methods
@@ -31,5 +31,10 @@ public class Resource implements Comparator<Resource>, Comparable<Resource> {
 	// Put Methods
 	private void setName (String iName) {
 		name = iName;
+	}
+	
+	// Output methods
+	public String print () {
+		return getName();
 	}
 }
