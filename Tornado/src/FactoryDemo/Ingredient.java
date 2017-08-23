@@ -1,18 +1,9 @@
-package cookbook;
+package FactoryDemo;
 
 public class Ingredient extends Resource {
 	private int quantity;
 	
 	// Constructors 
-	public Ingredient(Resource iResource) {
-		super(iResource);
-		setQty(1);
-	}	
-	public Ingredient(Resource iResource, int iQuantity) {
-		super(iResource);
-		this.setQty(iQuantity);
-		
-	}	
 	public Ingredient(String iName) {
 		super(iName);
 		setQty(1);
@@ -21,7 +12,6 @@ public class Ingredient extends Resource {
 		super(iName);
 		this.setQty(iQuantity);
 	}
-	
 	
 	// get methods
 	public int getQty () {
@@ -34,7 +24,7 @@ public class Ingredient extends Resource {
 	}
 	
 	// print methods
-	public String printQuantity() {
-		return getName() + " x" + getQty();
+	public String print () {
+		return super.print() + " x" + getQty();
 	}
 }

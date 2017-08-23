@@ -12,21 +12,32 @@ import org.apache.lucene.queryparser.classic.ParseException;
 import org.apache.lucene.queryparser.classic.QueryParser;
 import org.apache.lucene.search.IndexSearcher;
 import org.apache.lucene.search.Query;
+import org.apache.lucene.search.ScoreDoc;
 import org.apache.lucene.search.TopDocs;
 import org.apache.lucene.store.Directory;
 import org.apache.lucene.store.RAMDirectory;
 
 public class Cookbook {
+	// Lucene Stuff
     StandardAnalyzer analyzer = new StandardAnalyzer();
-
-    // 1. create the index
     Directory index = new RAMDirectory();
     IndexWriterConfig config = new IndexWriterConfig(analyzer);
-    IndexWriter writer = null;
+    IndexWriter writer;
+    
+    // Stored Recipes
+    Recipe[] storedRecipes;
 	
 	// Constructors
-	public Cookbook () throws Exception {
-		writer = new IndexWriter(index, config);
+	public Cookbook () {
+		storedRecipes = null;
+		
+		try {
+			writer = new IndexWriter(index, config);
+		} catch (IOException e) {
+			// TODO Auto-generated catch block
+			writer = null;
+			e.printStackTrace();
+		}
 	}
 	
 	// Get methods
@@ -39,9 +50,17 @@ public class Cookbook {
 		    IndexSearcher searcher = new IndexSearcher(reader);
 			
 			//Search by Resource Name
-			QueryParser qp = new QueryParser("input", analyzer);
+			QueryParser qp = new QueryParser("action", analyzer);
 			Query resourcecQuery = qp.parse(resource.getName());
 			hits = searcher.search(resourcecQuery, 10);
+			
+			System.out.println(hits);
+			System.out.println("Total Results :: " + hits.totalHits);
+	        for (ScoreDoc sd : hits.scoreDocs) 
+	        {
+	            Document d = searcher.doc(sd.doc);
+	            System.out.println(String.format(d.get("action")));
+	        }			
 
 		} catch (IOException e) {
 			// TODO Auto-generated catch block

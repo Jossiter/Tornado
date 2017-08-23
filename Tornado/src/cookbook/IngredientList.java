@@ -17,13 +17,13 @@ public class IngredientList implements Comparator<IngredientList>, Comparable<In
 	@Override
 	public int compareTo(IngredientList o) {
 		// TODO Auto-generated method stub
-		return (this.print()).compareTo(o.print());
+		return (this.printQuantities()).compareTo(o.printQuantities());
 	}
 
 	@Override
 	public int compare(IngredientList o1, IngredientList o2) {
 		// TODO Auto-generated method stub
-		return (o1.print()).compareTo(o2.print());
+		return (o1.printQuantities()).compareTo(o2.printQuantities());
 	}	
 	
 	// Get methods
@@ -43,21 +43,40 @@ public class IngredientList implements Comparator<IngredientList>, Comparable<In
 	
 	// Output methods
 	public String print () {
-		// System.out.println(ingredients);
+		
 		Iterator<Ingredient> i = ingredients.iterator();
 		Ingredient ingredient;
 		String output = "";
 		
-		// Print out first item
+		// Print out first item (without quantities)
 		if (i.hasNext()) {
 		    ingredient = (Ingredient) i.next();
 			output = ingredient.print();
 		}
 		
-		// Print out other items
+		// Print out other items (without quantities)
 		while (i.hasNext()) {
 			ingredient = (Ingredient) i.next();
 			output += " " + ingredient.print();
+		}
+		
+		return output;
+	}	
+	public String printQuantities () {
+		Iterator<Ingredient> i = ingredients.iterator();
+		Ingredient ingredient;
+		String output = "";
+		
+		// Print out first item (with quantities)
+		if (i.hasNext()) {
+		    ingredient = (Ingredient) i.next();
+			output = ingredient.printQuantity();
+		}
+		
+		// Print out other items (with quantities)
+		while (i.hasNext()) {
+			ingredient = (Ingredient) i.next();
+			output += " " + ingredient.printQuantity();
 		}
 		
 		return output;

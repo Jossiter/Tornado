@@ -1,4 +1,4 @@
-package cookbook;
+package FactoryDemo;
 
 import java.util.Comparator;
 
@@ -8,9 +8,6 @@ public class Resource implements Comparator<Resource>, Comparable<Resource> {
 	// Constructors
 	public Resource (String iName) {
 		setName(iName);
-	}
-	protected Resource (Resource orig) {
-		name = orig.name;
 	}
 	
 	// Comparators

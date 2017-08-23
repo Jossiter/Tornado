@@ -35,8 +35,7 @@ public class Recipe implements Comparator<Recipe>, Comparable<Recipe> {
 	// Get Methods
 	public Document document () {
     	Document document = new Document();
-    	document.add(new TextField("action", action.print() , Field.Store.YES));
-    	document.add(new TextField("input", input.print() , Field.Store.YES));
+    	document.add(new TextField("action", action.print() + " " + input.print(), Field.Store.YES));
        	document.add(new TextField("output", output.print() , Field.Store.YES));
     	return document;		
 	}
@@ -56,9 +55,15 @@ public class Recipe implements Comparator<Recipe>, Comparable<Recipe> {
 	// Output methods
 	public String print () {
 		return action.print() 
+				+ " " 
+				+ input.print();
+
+	}
+	public String printFull () {
+		return action.print() 
 				+ " : " 
-				+ input.print()
+				+ input.printQuantities()
 				+ " = "
-				+ output.print();
-	}	
+				+ output.printQuantities();
+	}		
 }

@@ -37,29 +37,11 @@ public class TestIngredients {
 		
 		Recipe recipe2 = new Recipe(a, i, o);
 		
+		System.out.println(recipe1.printFull());
+		System.out.println(recipe2.printFull());
+		System.out.println();
 		System.out.println(recipe1.print());
 		System.out.println(recipe2.print());
-
-		
-		Cookbook cb = null;
-
-			try {
-				cb = new Cookbook();
-			} catch (Exception e) {
-				// TODO Auto-generated catch block
-				e.printStackTrace();
-			}
-
-		cb.addRecipe(recipe1);
-		cb.addRecipe(recipe2);
-		cb.close();
-		
-		try {
-			TopDocs td = cb.findResource(water);
-		} catch (Exception e) {
-			// TODO Auto-generated catch block
-			e.printStackTrace();
-		}
 	}
 
 }
