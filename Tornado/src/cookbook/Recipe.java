@@ -1,9 +1,6 @@
 package cookbook;
 
 import java.util.Comparator;
-import org.apache.lucene.document.Document;
-import org.apache.lucene.document.Field;
-import org.apache.lucene.document.TextField;
 
 public class Recipe implements Comparator<Recipe>, Comparable<Recipe> {
 	
@@ -33,12 +30,6 @@ public class Recipe implements Comparator<Recipe>, Comparable<Recipe> {
 
 	
 	// Get Methods
-	public Document document () {
-    	Document document = new Document();
-    	document.add(new TextField("action", action.print() + " " + input.print(), Field.Store.YES));
-       	document.add(new TextField("output", output.print() , Field.Store.YES));
-    	return document;		
-	}
 	
 	
 	// Set Methods

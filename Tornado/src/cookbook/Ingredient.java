@@ -12,16 +12,7 @@ public class Ingredient extends Resource {
 		super(iResource);
 		this.setQty(iQuantity);
 		
-	}	
-	public Ingredient(String iName) {
-		super(iName);
-		setQty(1);
-	}	
-	public Ingredient(String iName, int iQuantity) {
-		super(iName);
-		this.setQty(iQuantity);
 	}
-	
 	
 	// get methods
 	public int getQty () {

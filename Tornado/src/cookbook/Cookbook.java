@@ -1,9 +1,13 @@
 package cookbook;
 
 import java.io.IOException;
+import java.util.ArrayList;
 
 import org.apache.lucene.analysis.standard.StandardAnalyzer;
 import org.apache.lucene.document.Document;
+import org.apache.lucene.document.Field;
+import org.apache.lucene.document.StoredField;
+import org.apache.lucene.document.TextField;
 import org.apache.lucene.index.DirectoryReader;
 import org.apache.lucene.index.IndexReader;
 import org.apache.lucene.index.IndexWriter;
@@ -25,25 +29,27 @@ public class Cookbook {
     IndexWriter writer;
     
     // Stored Recipes
-    Recipe[] storedRecipes;
+    ArrayList<Recipe> storedRecipes;
 	
 	// Constructors
-	public Cookbook () {
-		storedRecipes = null;
-		
+	public Cookbook () {		
 		try {
 			writer = new IndexWriter(index, config);
+			storedRecipes = new ArrayList<Recipe>();
 		} catch (IOException e) {
 			// TODO Auto-generated catch block
 			writer = null;
+			storedRecipes = null;
 			e.printStackTrace();
 		}
 	}
 	
-	// Get methods
-	public TopDocs findResource (Resource resource) {
+	// Search methods
+	//
+	public Recipe[] findResource (Resource resource) {
 	    IndexReader reader;
 	    TopDocs hits = null;
+	    Recipe[] ra = null;
 	    
 		try {
 			reader = DirectoryReader.open(index);
@@ -52,14 +58,18 @@ public class Cookbook {
 			//Search by Resource Name
 			QueryParser qp = new QueryParser("action", analyzer);
 			Query resourcecQuery = qp.parse(resource.getName());
-			hits = searcher.search(resourcecQuery, 10);
+			hits = searcher.search(resourcecQuery, 10);		
 			
-			System.out.println(hits);
-			System.out.println("Total Results :: " + hits.totalHits);
+			//System.out.println("Total Results :: " + hits.totalHits);
+			ra = new Recipe[hits.totalHits];
+			int offset = 0;
 	        for (ScoreDoc sd : hits.scoreDocs) 
 	        {
 	            Document d = searcher.doc(sd.doc);
-	            System.out.println(String.format(d.get("action")));
+	            int i = Integer.parseInt(d.get("ID"));
+	            ra[offset++] = storedRecipes.get(i);
+	            //System.out.println(String.format(d.get("action")));
+	            //System.out.println(String.format(d.get("ID")));
 	        }			
 
 		} catch (IOException e) {
@@ -72,16 +82,25 @@ public class Cookbook {
 			hits = null;
 		}
 		
-		return hits;
+		return ra;
 	}
 	
 	// Put methods
+	//
 	public boolean addRecipe (Recipe recipe) {
 		boolean added = true;
 		
 		try {
-			writer.addDocument(recipe.document());
+			storedRecipes.add(recipe);
+			
+		    Document document = new Document();
+		    document.add(new StoredField("ID", storedRecipes.size() - 1));
+		    document.add(new TextField("action", recipe.print(), Field.Store.NO));
+		    document.add(new TextField("output", recipe.printFull() , Field.Store.NO));		
+			
+			writer.addDocument(document);
 			writer.commit();
+			
 		} catch (IOException e) {
 			// TODO Auto-generated catch block
 			added = false;

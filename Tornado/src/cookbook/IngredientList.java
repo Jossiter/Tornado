@@ -37,7 +37,6 @@ public class IngredientList implements Comparator<IngredientList>, Comparable<In
 		ingredients.add(ingredient);
 	}
 	public void clear () {
-		ingredients = null;
 		ingredients = new TreeSet<Ingredient>();
 	}
 	
