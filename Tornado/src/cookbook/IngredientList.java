@@ -29,11 +29,47 @@ public class IngredientList implements Comparator<IngredientList>, Comparable<In
 	public TreeSet<Ingredient> getIngredients () {
 		return ingredients;
 	}
+	public Ingredient find (Ingredient ing) {
+		Iterator<Ingredient> i = ingredients.iterator();
+		Ingredient ingredient;
+		
+		// Search for ingredient
+		while (i.hasNext()) {
+			ingredient = (Ingredient) i.next();
+			if (ingredient.compareTo(ing) == 0) {
+				return ingredient;
+			}
+		}		
+		
+		return null;
+	}
 	
 	
 	// Set methods
-	public void add (Ingredient ingredient) {
-		ingredients.add(ingredient);
+	public boolean add (Ingredient ingredient) {
+		if (ingredient.getQty() < 1) {
+			return false;
+		} else {
+			return ingredients.add(ingredient);
+		}
+	}
+	
+	protected boolean increase (Ingredient ingredient) {
+		boolean ret = add(ingredient);
+		
+		if (ret != true ) {
+			Ingredient in = find (ingredient);
+			ret = true;
+			
+			if (in != null) {
+				int qty = in.getQty() + ingredient.getQty();
+				in.setQty(qty);
+			} else {
+				ret = false;
+			}
+		}
+		
+		return ret;
 	}
 	public void clear () {
 		ingredients = new TreeSet<Ingredient>();

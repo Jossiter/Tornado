@@ -26,7 +26,7 @@ public class Recipe implements Comparator<Recipe>, Comparable<Recipe> {
 	public int compare(Recipe r1, Recipe r2) {
 		// TODO Auto-generated method stub
 		return (r1.print()).compareTo(r2.print());
-	}	
+	}
 
 	
 	// Get Methods
@@ -56,5 +56,5 @@ public class Recipe implements Comparator<Recipe>, Comparable<Recipe> {
 				+ input.printQuantities()
 				+ " = "
 				+ output.printQuantities();
-	}		
+	}
 }

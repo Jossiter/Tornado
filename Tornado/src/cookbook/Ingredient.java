@@ -4,13 +4,13 @@ public class Ingredient extends Resource {
 	private int quantity;
 	
 	// Constructors 
-	public Ingredient(Resource iResource) {
-		super(iResource);
+	public Ingredient(Resource resource) {
+		super(resource);
 		setQty(1);
 	}	
-	public Ingredient(Resource iResource, int iQuantity) {
-		super(iResource);
-		this.setQty(iQuantity);
+	public Ingredient(Resource resource, int qty) {
+		super(resource);
+		this.setQty(qty);
 		
 	}
 	
@@ -20,7 +20,7 @@ public class Ingredient extends Resource {
 	}
 	
 	// set methods
-	private void setQty (int q) {
+	protected void setQty (int q) {
 		quantity = q;
 	}
 	
