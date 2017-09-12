@@ -3,17 +3,20 @@ import cookbook.Ingredient;
 import cookbook.IngredientList;
 import cookbook.Recipe;
 import cookbook.Resource;
+import cookbook.ResourceFactory;
 
 public class TestIngredients {
 
 	public static void main(String[] args) {
 		
-		Resource water = new Resource("Water");
-		Resource flour = new Resource("Flour");
-		Resource eggs = new Resource("Eggs");
-		Resource cake = new Resource("Cake");		
-		Resource beef = new Resource("Beef");
-		Resource gravy = new Resource("Gravy");
+		ResourceFactory resourceFactory = new ResourceFactory();
+		
+		Resource water = resourceFactory.getResource("Water");
+		Resource flour = resourceFactory.getResource("Flour");
+		Resource eggs = resourceFactory.getResource("Eggs");
+		Resource cake = resourceFactory.getResource("Cake");		
+		Resource beef = resourceFactory.getResource("Beef");
+		Resource gravy = resourceFactory.getResource("Gravy");
 		
 		Action cook = new Action("Cook");
 		Action stir = new Action("Stir");

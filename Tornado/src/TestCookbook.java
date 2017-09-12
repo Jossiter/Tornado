@@ -8,13 +8,15 @@ public class TestCookbook {
 
 	public static void main(String[] args) throws IOException {
 		
-		Resource water = new Resource("Water");
-		Resource flour = new Resource("Flour");
-		Resource eggs = new Resource("Eggs");
-		Resource cake = new Resource("Cake");		
-		Resource beef = new Resource("Beef");
-		Resource gravy = new Resource("Gravy");
-		Resource roastbeef = new Resource("Roast Beef");
+		ResourceFactory resourceFactory = new ResourceFactory();
+		
+		Resource water = resourceFactory.getResource("Water");
+		Resource flour = resourceFactory.getResource("Flour");
+		Resource eggs = resourceFactory.getResource("Eggs");
+		Resource cake = resourceFactory.getResource("Cake");		
+		Resource beef = resourceFactory.getResource("Beef");
+		Resource gravy = resourceFactory.getResource("Gravy");
+		Resource roastbeef = resourceFactory.getResource("Roast Beef");
 		
 		Action cook = new Action("Cook");
 		Action stir = new Action("Stir");
@@ -76,7 +78,7 @@ public class TestCookbook {
 		}		
 		
 		System.out.println("");
-		System.out.println("** Searching for " +roastbeef.print());
+		System.out.println("** Searching for " + roastbeef.print());
 		hits = cb.findResource(roastbeef);
 		System.out.println("Total Results :: " + hits.length);
 		

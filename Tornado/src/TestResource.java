@@ -1,19 +1,20 @@
 import cookbook.Resource;
+import cookbook.ResourceFactory;
 
 public class TestResource {
 
 
 	public static void main(String[] args) {
-		// TODO Auto-generated method stub
+		ResourceFactory resourceFactory = new ResourceFactory();
 		
 	    String ResourceTestName = "Water";
 		String ResourceTestPrint = ResourceTestName;
+		String ResourceTestPrintID = "[2] " + ResourceTestPrint;
 		
 		System.out.println("** RESOURCE TESTS **");
 		
-		Resource water = new Resource(ResourceTestName);
-		Resource amber = new Resource("Amber");
-		Resource water2 = new Resource(ResourceTestName);
+		Resource amber = resourceFactory.getResource("Amber");
+		Resource water = resourceFactory.getResource(ResourceTestName);
 		
 		// Check name
 		System.out.print("#TEST 001# ");
@@ -41,19 +42,29 @@ public class TestResource {
 
 		// CompareTo equal
 		System.out.print("#TEST 004# ");
-		if (water.compareTo(water2) == 0) {
-			System.out.println("Water = Water2 CompareTo Test Passed");
+		if (resourceFactory.getResource(ResourceTestName) == null) {
+			System.out.println("Can't create Water2: Test Passed");
 		} else {
 			System.out.println("@FAILED");
 		}
 		
 		// Compare
 		System.out.print("#TEST 005# ");
-		if (water.compare(amber, water2) < 0) {
-			System.out.println("Water: Amber < Water2 Comparison Test Passed");
+		if (water.compare(amber, water) < 0) {
+			System.out.println("Water: Amber < Water Comparison Test Passed");
 		} else {
 			System.out.println("@FAILED");
 		}
+		
+		// Check ID print
+		System.out.print("#TEST 006# ");
+		if (water.printID().compareTo(ResourceTestPrintID) == 0) {
+			System.out.println("Print ID Test Passed : " + water.printID());
+		} else {
+			System.out.println("@FAILED : '" + water.printID() + "' / '" + ResourceTestPrintID + "'");
+		}
+		
+		
 }
 
 }

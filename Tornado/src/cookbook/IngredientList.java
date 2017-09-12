@@ -2,11 +2,10 @@ package cookbook;
 
 import java.util.Comparator;
 import java.util.Iterator;
-import java.util.SortedSet;
 import java.util.TreeSet;
 
 public class IngredientList implements Comparator<IngredientList>, Comparable<IngredientList>{
-	private SortedSet<Ingredient> ingredients;
+	private TreeSet<Ingredient> ingredients;
 	
 	// Constructors
 	public IngredientList () {
@@ -27,7 +26,7 @@ public class IngredientList implements Comparator<IngredientList>, Comparable<In
 	}	
 	
 	// Get methods
-	public SortedSet<Ingredient> getIngredients () {
+	public TreeSet<Ingredient> getIngredients () {
 		return ingredients;
 	}
 	
