@@ -30,6 +30,12 @@ public class Recipe implements Comparator<Recipe>, Comparable<Recipe> {
 
 	
 	// Get Methods
+	public IngredientList getInput () {
+		return input;
+	}
+	public IngredientList getOutput () {
+		return output;
+	}
 	
 	
 	// Set Methods

@@ -24,10 +24,11 @@ public class TestIngredients {
 		IngredientList i = new IngredientList();
 		IngredientList o = new IngredientList();		
 
-		i.add(new Ingredient(flour));
-		i.add(new Ingredient(eggs, 2));	
-		i.add(new Ingredient(water, 3));			
-		o.add(new Ingredient(cake));	
+		System.out.println(i.add(new Ingredient(flour)));
+		System.out.println(i.add(new Ingredient(eggs, 2)));	
+		System.out.println(i.add(new Ingredient(water, 2)));	
+		System.out.println(i.add(new Ingredient(water, 1)));
+		System.out.println(o.add(new Ingredient(cake)));	
 		Recipe recipe1 = new Recipe(cook, i, o);
 		
 		i = new IngredientList();
@@ -44,7 +45,30 @@ public class TestIngredients {
 		System.out.println("Printing(Simple) recipe 1: " + recipe1.print());
 		System.out.println("Printing(Simple) recipe 2: " + recipe2.print());
 		System.out.println();
-	}
+		
+		/* 
+		System.out.println("Removing water from recipe 2");
+		i = recipe2.getInput();
+		o = recipe2.getOutput();	
+		System.out.println(i.remove(new Ingredient(water, 1)));
+		System.out.println("Printing(Simple) recipe 2: " + recipe2.print());
+		System.out.println();
+		
+		System.out.println("Removing 1 egg from recipe 1");
+		i = recipe1.getInput();
+		o = recipe1.getOutput();	
+		System.out.println(i.decrease(new Ingredient(eggs, 1)));
+		System.out.println("Printing(Full) recipe 1: " + recipe1.printFull());		
+		System.out.println();
+		
+		System.out.println("Removing final egg from recipe 1");
+		i = recipe1.getInput();
+		o = recipe1.getOutput();
+		System.out.println(i.decrease(new Ingredient(eggs, 1)));
+		System.out.println("Printing(Full) recipe 1: " + recipe1.printFull());		
+		System.out.println();
+		*/
+}
 
 }
 
