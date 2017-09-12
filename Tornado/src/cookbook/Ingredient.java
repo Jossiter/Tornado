@@ -14,6 +14,13 @@ public class Ingredient extends Resource {
 		
 	}
 	
+	// Comparators
+	@Override
+	public int compareTo(Resource o) {
+		// TODO Auto-generated method stub
+		return (this.print()).compareTo(o.print());
+	}
+	
 	// get methods
 	public int getQty () {
 		return quantity;
