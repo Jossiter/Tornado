@@ -1,13 +1,13 @@
 import cookbook.Ingredient;
-import cookbook.IngredientBag;
+import cookbook.Pouch;
 import cookbook.Resource;
 
-public class testBag {
+public class TestPouch {
 
 	public static void main(String[] args) {
 		// TODO Auto-generated method stub
 
-		IngredientBag i = new IngredientBag();
+		Pouch i = new Pouch();
 		printBag(i);
 		
 		System.out.println("");
@@ -43,7 +43,7 @@ public class testBag {
 		printBag(i);
 	}
 	
-	private static void printBag(IngredientBag bag) {
+	private static void printBag(Pouch bag) {
 		System.out.print("Bag contents (" + bag.qty() + "): ");
 		System.out.println(bag.print());
 		System.out.println("End of bag");		

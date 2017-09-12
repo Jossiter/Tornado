@@ -1,9 +1,9 @@
 package cookbook;
 
-public class IngredientBag {
+public class Pouch {
 	IngredientList ingredients;
 	
-	public IngredientBag () {
+	public Pouch () {
 		ingredients = new IngredientList();
 	}
 
