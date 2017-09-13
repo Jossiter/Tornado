@@ -35,6 +35,10 @@ public class Pouch {
 		return ingredients.qty();
 	}
 	
+	public Ingredient find (Resource resource) {
+		return (Ingredient) ingredients.find(resource);
+	}
+	
 	// Clear the bag
 	public void clear () {
 		ingredients.clear();

@@ -28,7 +28,22 @@ public class TestPouch {
 		printBag(i);
 		
 		System.out.println("");
-		System.out.print("Removing 2 more water : ");
+		System.out.print("Does the list have water? : ");
+		System.out.println(i.find(new Resource ("Water")));
+		printBag(i);
+		
+		System.out.println("");
+		System.out.print("Does the list have bananas? : ");
+		System.out.println(i.find(new Resource ("Banana")));
+		printBag(i);
+		
+		System.out.println("");
+		System.out.print("Does the list have zuchini? : ");
+		System.out.println(i.find(new Resource ("Zuchini")));
+		printBag(i);
+		
+		System.out.println("");
+		System.out.print("Removing 2 water : ");
 		System.out.println(i.remove(new Resource ("Water"), 2));
 		printBag(i);
 		

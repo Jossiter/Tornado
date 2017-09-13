@@ -19,7 +19,20 @@ public class Recipe implements Comparator<Recipe>, Comparable<Recipe> {
 	
     // Overriding the compareTo method
 	public int compareTo(Recipe r) {
-		return (this.print()).compareTo(r.print());
+		// -1 means not the same
+		// 0 means identical 
+		// +1 means similar (different qty or partial match)
+		// check actions are the same
+		
+		int ret = this.action.compareTo(r.action);
+		
+		if (ret == 0) {
+			ret = (this.print()).compareTo(r.print());
+		} else {
+			ret = -1;
+		}
+		
+		return ret;
 	}
 
 	@Override
@@ -28,6 +41,13 @@ public class Recipe implements Comparator<Recipe>, Comparable<Recipe> {
 		return (r1.print()).compareTo(r2.print());
 	}
 
+	// Query Methods
+	// Does this recipe contain this resource?
+	public boolean testResource (Resource resource) {
+		
+		
+		return true;
+	}
 	
 	// Get Methods
 	public IngredientList getInput () {
@@ -36,7 +56,9 @@ public class Recipe implements Comparator<Recipe>, Comparable<Recipe> {
 	public IngredientList getOutput () {
 		return output;
 	}
-	
+	public Action getAction () {
+		return action;
+	}
 	
 	// Set Methods
 	private void setAction (Action a) {

@@ -30,13 +30,21 @@ public class Resource implements Comparator<Resource>, Comparable<Resource> {
 	@Override
 	public int compareTo(Resource o) {
 		// TODO Auto-generated method stub
-		return this.id - o.id;
+		if (o == null) {
+			return 1;
+		}
+
+		return (this.print().toLowerCase()).compareTo(o.print().toLowerCase());
 	}
 
 	@Override
 	public int compare(Resource o1, Resource o2) {
 		// TODO Auto-generated method stub
-		return (o1.print()).compareTo(o2.print());
+		if (o1 == null || o2 == null) {
+			return -1;
+		}
+		
+		return (o1.print().toLowerCase()).compareTo(o2.print().toLowerCase());
 	}
 		
 	// Get Methods

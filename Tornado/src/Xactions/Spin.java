@@ -1,4 +1,4 @@
-package actions;
+package Xactions;
 
 public class Spin {
 	protected Rating rate = new Rating();

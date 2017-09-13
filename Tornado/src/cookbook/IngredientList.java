@@ -25,26 +25,6 @@ public class IngredientList implements Comparator<IngredientList>, Comparable<In
 		return (o1.printQuantities()).compareTo(o2.printQuantities());
 	}	
 	
-	// Search methods
-	public TreeSet<Ingredient> getIngredients () {
-		return ingredients;
-	}
-	public Ingredient find (Ingredient ing) {
-		Iterator<Ingredient> i = ingredients.iterator();
-		Ingredient ingredient;
-		
-		// Search for ingredient
-		while (i.hasNext()) {
-			ingredient = (Ingredient) i.next();
-			if (ingredient.compareTo(ing) == 0) {
-				return ingredient;
-			}
-		}		
-		
-		return null;
-	}
-	
-	
 	// Add & Remove methods
 	public boolean add (Ingredient ingredient) {
 		if (ingredient.getQty() < 1) {
@@ -96,6 +76,10 @@ public class IngredientList implements Comparator<IngredientList>, Comparable<In
 	}
 	
 	// Query methods
+	public TreeSet<Ingredient> getIngredients () {
+		return ingredients;
+	}
+	
 	public int qty () {
 		Iterator<Ingredient> i = ingredients.iterator();
 		
@@ -107,6 +91,26 @@ public class IngredientList implements Comparator<IngredientList>, Comparable<In
 		
 		return qty;
 	}	
+	
+	public Ingredient find (Resource resource) {
+		Iterator<Ingredient> i = ingredients.iterator();
+		Ingredient in, ret = null;
+		int result;
+		
+		while (i.hasNext()) {
+		    in = (Ingredient) i.next();
+		    result = in.compareTo(resource);
+			if (result == 0) {
+				ret = in;
+				break;
+			} else if (result > 0) {
+				ret = null;
+				break;
+			}
+		}		
+		
+		return ret; 
+	}
 	
 	// Emptying the bag
 	protected void clear () {

@@ -15,10 +15,9 @@ public class Ingredient extends Resource {
 	}
 	
 	// Comparators
-	@Override
-	public int compareTo(Resource o) {
+	public int equals (Ingredient i) {
 		// TODO Auto-generated method stub
-		return (this.print()).compareTo(o.print());
+		return (this.printQuantity().toLowerCase()).compareTo(i.printQuantity().toLowerCase());
 	}
 	
 	// get methods

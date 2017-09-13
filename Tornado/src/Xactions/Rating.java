@@ -1,4 +1,4 @@
-package actions;
+package Xactions;
 
 public class Rating {
 	protected int min, max, rate;

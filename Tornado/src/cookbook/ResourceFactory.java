@@ -44,7 +44,7 @@ public class ResourceFactory {
 		
 		if(resourceName == null){
 			ret = false;
-		} else if (! uniqueResources.add(resourceName)) {
+		} else if (! uniqueResources.add(resourceName.toLowerCase())) {
 			ret = false;		
 		}
 		
